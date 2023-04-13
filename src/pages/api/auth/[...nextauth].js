@@ -1,16 +1,15 @@
 import NextAuth from "next-auth";
 
-const KEYP_APP_DOMAIN = "https://app.usekeyp.com";
-// const KEYP_APP_DOMAIN = "https://localhost";
-// const KEYP_APP_DOMAIN = "https://api.staging-env.usekeyp.com";
+const KEYP_API_DOMAIN =
+  process.env.NEXT_PUBLIC_KEYP_API_DOMAIN || "https://api.usekeyp.com";
 
 const KeypProvider = {
   id: "keyp",
   name: "Keyp",
   type: "oauth",
   version: "2.0",
-  clientId: process.env.KEYP_CLIENT_ID,
-  wellKnown: `${KEYP_APP_DOMAIN}/oauth/.well-known/openid-configuration`,
+  clientId: process.env.NEXT_PUBLIC_KEYP_CLIENT_ID,
+  wellKnown: `${KEYP_API_DOMAIN}/oauth/.well-known/openid-configuration`,
   checks: ["pkce"],
   authorization: { params: { scope: "openid email" } },
   client: { token_endpoint_auth_method: "none" },
@@ -26,11 +25,7 @@ const KeypProvider = {
 };
 
 export default NextAuth({
-  pages: {
-    signIn: "/login",
-    error: "/login", // Error code passed in query string as ?error=
-  },
-  secret: process.env.TOKEN_SECRET,
+  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SESSION_COOKIE_SECRET,
   providers: [KeypProvider],
   callbacks: {
     async jwt({ token, account, profile }) {
