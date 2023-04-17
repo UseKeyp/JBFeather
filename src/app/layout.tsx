@@ -4,6 +4,8 @@ import { useState } from "react";
 import "./globals.css";
 import { Roboto_Mono as Font } from "@next/font/google";
 import { createClient, Provider } from "urql";
+import Navbar from "../components/Navbar";
+import { SessionProvider } from "next-auth/react";
 
 const font = Font({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -32,7 +34,9 @@ export default function RootLayout({
             <ProjectContext.Provider
               value={{ projectId: projectId, setProjectId: setProjectId }}
             >
-              {children}
+              <SessionProvider session={session}>
+                <Navbar>{children}</Navbar>
+              </SessionProvider>
             </ProjectContext.Provider>
           </Provider>
         </main>

@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "2.5.3",
+    "@chakra-ui/system": "2.5.3",
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
+    "@fluentui/react-icons": "2.0.199",
     "@next/font": "13.1.2",
     "@rainbow-me/rainbowkit": "^0.8.1",
     "@types/node": "18.11.18",
@@ -19,11 +24,13 @@
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
     "ethers": "^5.7.2",
+    "framer-motion": "10.9.1",
     "graphql": "^16.6.0",
     "next": "13.1.2",
     "next-auth": "^4.22.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "4.8.0",
     "typescript": "4.9.4",
     "urql": "^3.0.3",
     "wagmi": "^0.10.11"

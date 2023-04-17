@@ -43,6 +43,7 @@ export default NextAuth({
     async session({ session, token }) {
       // Send properties to the client, like an access_token from a provider.
       if (token) {
+        session.user.socialLogo = session.user.id.split("-").toLowercase();
         session.user.accessToken = token.accessToken;
         session.user.username = token.username;
         session.user.address = token.address;
